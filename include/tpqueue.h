@@ -38,7 +38,7 @@ class TPQueue {
     void push(const T& value) {
         ITEM* val = head;
         ITEM* item = create(value);
-        while (val && val->data.prior >= value.prior)
+        while (val && val->value.prior >= value.prior)
             val = val->next;
         if (!val && head) {
             tail->next = item;
