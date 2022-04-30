@@ -20,42 +20,42 @@ class TPQueue {
    ITEM* head;
    ITEM* tail;
 
-public:
-   T pop() {
-       if (head) {
-           ITEM* val = head->next;
-           if (val)
-               val->prev = nullptr;
-           T value = head->value;
-           delete head;
-           head = val;
-           return value;
-       } else {
-           throw std::string("Empty!");
-       }
-   }
-   void push(const T& value) {
-       ITEM* val = head;
-       ITEM* item = create(value);
-       while (val && val->data.prior >= value.prior)
-           val = val->next;
-       if (!val && head) {
-           tail->next = item;
-           tail->next->prev = tail;
-           tail = item;
-       } else if (!val && !head) {
-           head = tail = item;
-       } else if (!val->prev) {
-           val->prev = item;
-           item->next = val;
-           head = item;
-       } else {
-           val->prev->next = item;
-           item->prev = val->prev;
-           item->next = val;
-           val->prev = item;
-       }
-   }
+ public:
+    T pop() {
+        if (head) {
+            ITEM* val = head->next;
+            if (val)
+                val->prev = nullptr;
+            T value = head->value;
+            delete head;
+            head = val;
+            return value;
+        } else {
+            throw std::string("Empty!");
+        }
+    }
+    void push(const T& value) {
+        ITEM* val = head;
+        ITEM* item = create(value);
+        while (val && val->data.prior >= value.prior)
+            val = val->next;
+        if (!val && head) {
+            tail->next = item;
+            tail->next->prev = tail;
+            tail = item;
+        } else if (!val && !head) {
+            head = tail = item;
+        } else if (!val->prev) {
+            val->prev = item;
+            item->next = val;
+            head = item;
+        } else {
+            val->prev->next = item;
+            item->prev = val->prev;
+            item->next = val;
+            val->prev = item;
+        }
+    }
 };
 
 struct SYM {
