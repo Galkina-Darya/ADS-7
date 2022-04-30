@@ -1,6 +1,7 @@
 // Copyright 2022 NNTU-CS
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
+#include <string>
 
 template<typename T>
 class TPQueue {
@@ -16,9 +17,9 @@ class TPQueue {
         item->next = nullptr;
         item->prev = nullptr;
         return item;
-   }
-   ITEM* head;
-   ITEM* tail;
+    }
+    ITEM* head;
+    ITEM* tail;
 
  public:
     T pop() {
